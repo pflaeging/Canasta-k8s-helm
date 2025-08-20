@@ -1,0 +1,17 @@
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Grant
+metadata:
+  name: grant
+spec:
+  mariaDbRef:
+    name: db-instance
+  privileges:
+    - "ALL PRIVILEGES"
+  database: "mediawiki"
+  table: "*"
+  username: mediawiki
+  grantOption: true
+  host: "%"
+  cleanupPolicy: Delete
+  requeueInterval: 10h
+  retryInterval: 30s

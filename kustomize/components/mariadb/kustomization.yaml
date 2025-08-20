@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - db-instance.yaml
+  - db.yaml
+  - db-secret.yaml
+  - db-user.yaml
+  - db-grant.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+#
+

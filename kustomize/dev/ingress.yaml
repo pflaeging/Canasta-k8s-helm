@@ -1,0 +1,22 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: web-dev
+  annotations:
+    cert-manager.io/cluster-issuer: gubernat-issuer
+spec:
+  tls:
+    - hosts:
+        - uibk-m1.pfpk.lan
+      secretName: web-dev-tls-secret
+  rules:
+    - host: uibk-m1.pfpk.lan
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: web
+                port:
+                  number: 80
